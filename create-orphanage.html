@@ -38,7 +38,9 @@
   <body>
     <div id="create-orphanage">
       <aside class="animate-right sidebar">
-        <img src="./public/images/map-marker.svg" alt="Happy" />
+        <a href="./index.html"
+          ><img src="./public/images/map-marker.svg" alt="Happy"
+        /></a>
         <footer>
           <button onclick="history.back()">
             <img src="./public/images/arrow-back.svg" alt="voltar" />
@@ -51,6 +53,8 @@
             <legend>Dados</legend>
             <div class="map-container">
               <div id="mapid"></div>
+              <input type="hidden" name="lat">
+              <input type="hidden" name="lng">
 
               <footer>
                 <a href="#" id="select-point">
@@ -60,11 +64,11 @@
             </div>
             <div class="input-block">
               <label for="name">Nome</label>
-              <input type="name" name="name" />
+              <input type="name" name="name" required/>
             </div>
 
             <div class="input-block">
-              <label for="about">
+              <label for="about" required>
                 Sobre
                 <span>Máximo de 300 caracteres</span>
               </label>
@@ -73,16 +77,26 @@
 
             <div class="input-block">
               <label for="whatsapp">Número de whatsapp</label>
-              <input type="whatsapp" name="whatsapp" />
+              <input type="whatsapp" name="whatsapp" required />
             </div>
 
             <div class="input-block images">
               <label for="images">Foto</label>
               <div class="images-upload" id="images">
-                <input type="images" placeholder="Cole o link da foto aqui" />
+                <div class="new-upload">
+                  <input 
+                    name="images" 
+                    placeholder="Cole o link da foto aqui" 
+                    required
+                  />
+                  <span onclick="deleteField(event)">
+                      <img src="./public/images/remove-file.svg" alt="Remover foto"/>
+                  </span>
+                </div>
               </div>
-              <button type="button">
-                <img src="./public/images/add-file.svg" alt="" />
+              <button onclick="addPhotoField()"
+              type="button">
+                <img src="./public/images/add-file.svg" alt="Nova imagem" />
               </button>
             </div>
           </fieldset>
@@ -92,12 +106,12 @@
 
             <div class="input-block">
               <label for="instructions">Instruções</label>
-              <textarea type="instructions" name="instructions"></textarea>
+              <textarea type="instructions" name="instructions" required></textarea>
             </div>
 
             <div class="input-block">
               <label for="opening_hours">Horário das visitas</label>
-              <input type="opening_hours" name="opening_hours" />
+              <input type="opening_hours" name="opening_hours" required />
             </div>
 
             <div class="input-block">
@@ -106,17 +120,27 @@
                 type="hidden"
                 id="open_on_weekends"
                 name="open_on_weekends"
-                value="1"
+                value="1" 
+                required
               />
 
               <div class="button-select">
-                <button type="button" class="active">Sim</button>
-                <button type="button">Não</button>
+                <button 
+                  data-value="1" 
+                  onclick="toggleSelect(event)" 
+                  type="button" 
+                  class="active">
+                  Sim
+                </button>
+                <button 
+                  data-value="0" 
+                  onclick="toggleSelect(event)" 
+                  type="button" >
+                  Não
+                </button>
               </div>
 
-              <button type="submit" class="primary-button">
-                Confirmar
-              </button>
+              <button type="submit" class="primary-button">Confirmar</button>
             </div>
           </fieldset>
         </form>
