@@ -11,7 +11,7 @@
   margin-top: 0!important;
 }
 
-aside.sidebar footer button {
+aside footer button {
   width: 48px;
   height: 48px;
   border: none;
@@ -23,6 +23,7 @@ aside.sidebar footer button {
   align-items: center;
   justify-content: center;
   transition: background-color 0.2s;
+  margin-top: 3rem;
 }
 
 aside.sidebar footer button:hover {
